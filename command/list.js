@@ -7,13 +7,17 @@ function listCommand(command) {
 
   const resolvedVueFiles = path.resolve(process.cwd(), vueFiles);
   const parsedVueFiles = parseVueFiles(resolvedVueFiles);
-  const values = parsedVueFiles.map(file => file.path);
+  const values = new Set();
+  for(let i = 0; i < parsedVueFiles.length; i++) {
+    values.add(parsedVueFiles[i].path);
+  }
+  const valuesArray = Array.from(values);
 
-  console.log(values);
+  console.log(valuesArray);
 
   if (output) {
     const outPath = path.resolve(process.cwd(), output);
-    writeToFile(values, outPath);
+    writeToFile(valuesArray, outPath);
     console.log(`The list has been has been saved to ${outPath}`);
   }
 }
