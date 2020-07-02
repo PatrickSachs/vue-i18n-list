@@ -1,0 +1,17 @@
+{
+  "name": "vue-i18n-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Patrick Sachs",
+  "bin": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^5.1.0",
+    "glob": "^7.1.6",
+    "is-valid-glob": "^1.0.0"
+  }
+}
