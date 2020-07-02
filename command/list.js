@@ -1,5 +1,6 @@
 const { parseVueFiles } = require('../vue-files');
 const path = require('path');
+const fs = require('fs');
 
 function listCommand(command) {
   const { vueFiles, output } = command;
