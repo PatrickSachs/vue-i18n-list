@@ -9,14 +9,17 @@ function potCommand(command) {
   const parsedVueFiles = parseVueFiles(resolvedVueFiles);
 
   let text = '';
-
+  const known = new Set();
   for(let i = 0; i < parsedVueFiles.length; i++) {
     const res = parsedVueFiles[i];
-    // Meta data
-    text += '#: ' + removeInitialSlash(res.file) + ':' + res.line + '\n';
-    text += 'msgid ' + JSON.stringify(res.path) + '\n';
-    text += 'msgstr ""\n';
-    text += '\n';
+    if (!known.has(res.path)) {
+      // Meta data
+      text += '#: ' + removeInitialSlash(res.file) + ':' + res.line + '\n';
+      text += 'msgid ' + JSON.stringify(res.path) + '\n';
+      text += 'msgstr ""\n';
+      text += '\n';
+      known.add(res.path);
+    }
   }
 
   console.log(text);
